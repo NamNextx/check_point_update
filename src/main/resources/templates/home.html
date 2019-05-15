@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Managerment Employee</title>
+</head>
+<body>
+<h1>Employee List</h1>
+
+<a th:href="home">Home</a> <br/>
+<a th:href="create-employee">Create new employee</a>
+<div>
+    <table border="1">
+        <thead>
+        <tr>
+            <td>ID employee</td>
+            <td>Category</td>
+            <td>Name</td>
+            <td>Gender</td>
+            <td>Phone number</td>
+            <td>Option</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="em : ${employees}">
+            <td th:text="${em.getGen()}"></td>
+            <td>
+                <a th:text="${em.getCategory().getName()}" th:href="@{list-category}"></a>
+            </td>
+            <td th:text="${em.getName()}"></td>
+            <td th:text="${em.getGender()}"></td>
+            <td th:text="${em.getPhoneNumber()}"></td>
+
+            <td><a th:href="@{/update_employee/__${em.id}__}">Edit</a>
+                <a th:href="@{/delete_employee/__${em.id}__}" onclick="return confirm('Are you sure?')">delete</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<form>
+    <input name="s" type="text"/>
+    <input type="submit" value="Search">
+</form>
+
+
+<div>
+    <a th:href="@{'home'(page = ${employees.number - 1})}" th:if="${employees.hasPrevious()}">Previous</a>
+    <span th:text="${employees.number +1}"></span>/
+    <span th:text="${employees.totalPages}"></span>&ndash;&gt;
+    <a th:href="@{'/home' (page=${employees.number +1})}" th:if="${employees.hasNext()}">Next</a>
+</div>
+
+</body>
+</html>

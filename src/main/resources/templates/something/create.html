@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Employee</title>
+</head>
+<body>
+<h1>Create new Dao</h1>
+<a th:href="home">Home</a> <br/>
+<form th:action="@{/create-employee}" method="post" th:object="${employee}">
+    <table border="1">
+        <tr>
+            <td>ID employee</td>
+            <td> <input type="text" th:field="*{gen}"></td>
+        </tr>
+
+        <tr>
+            <td>Phone to contect</td>
+            <td><input type="text" th:field="*{phoneNumber}"></td>
+        </tr>
+
+        <tr>
+            <td>Gender</td>
+            <td> <input type="text" th:field="*{gender}"></td>
+        </tr>
+
+
+        <tr>
+            <td>Name</td>
+            <td> <input type="text" th:field="*{name}"></td>
+        </tr>
+
+        <tr>
+            <td>Email</td>
+            <td> <input type="text" th:field="*{email}"></td>
+        </tr>
+
+        <tr>
+            <td>Address</td>
+            <td> <input type="text" th:field="*{address}"></td>
+        </tr>
+
+        <tr>
+            <td>Group</td>
+            <td>
+                <select th:field="*{category}">
+                    <option th:each="p: ${categories}" th:value="${p.id}" th:text="${p.name}"></option>
+                </select>
+            </td>
+        </tr>
+    </table>
+    <input type="submit" value="Summit">
+</form>
+
+</body>
+</html>
