@@ -4,26 +4,44 @@
 <head>
     <meta charset="UTF-8">
     <title>Create Employee</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 </head>
 <body>
 <h1>Create new Dao</h1>
 <a th:href="home">Home</a> <br/>
 <form th:action="@{/create-employee}" method="post" th:object="${employee}">
-    <table border="1">
-        <tr>
+    <table class="table table-bordered table-hover">
+        <tr class="form-control">
             <td>ID employee</td>
-            <td> <input type="text" th:field="*{gen}"></td>
+            <td> <input class="form-control" type="text" th:field="*{gen}"></td>
         </tr>
 
         <tr>
             <td>Phone to contect</td>
-            <td><input type="text" th:field="*{phoneNumber}"></td>
+            <td><input type="number" th:field="*{phoneNumber}"></td>
         </tr>
 
         <tr>
             <td>Gender</td>
-            <td> <input type="text" th:field="*{gender}"></td>
+            <td>
+               <!-- <select th:field="*{gender}">
+                    <option name="Male" value="male">Male</option>
+                    <option name="Female" value="female">Female</option>
+                </select>-->
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="gender" value="male" checked>
+                        Male
+                    </label>
+                    <label>
+                        <input type="radio" name="gender"  value="female">
+                        Female
+                    </label>
+                </div>
+            </td>
+<!--            <td> <input type="text" th:field="*{gender}"></td>-->
         </tr>
+
 
 
         <tr>
@@ -33,12 +51,26 @@
 
         <tr>
             <td>Email</td>
-            <td> <input type="text" th:field="*{email}"></td>
+            <td> <input type="email" th:field="*{email}"></td>
         </tr>
 
         <tr>
             <td>Address</td>
-            <td> <input type="text" th:field="*{address}"></td>
+            <td>
+                <textarea  th:field="*{address}">
+                </textarea>
+            </td>
+
+        </tr>
+
+        <tr>
+            <td>CMND</td>
+            <td> <input type="text" th:field="*{cmnd}"></td>
+        </tr>
+
+        <tr>
+            <td>Birth</td>
+            <td> <input type="date" th:field="*{birth}"></td>
         </tr>
 
         <tr>
@@ -53,5 +85,45 @@
     <input type="submit" value="Summit">
 </form>
 
+<br>
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td></td>
+    </tr>
+    </tbody>
+</table>
+
+<div class="panel panel-danger">
+    <div class="panel-heading">
+        <h3 class="panel-title">Panel title</h3>
+    </div>
+    <div class="panel-body">
+        <table class="table table-bordered table-hover">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>ID</th>
+                <th>ID</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </body>
 </html>

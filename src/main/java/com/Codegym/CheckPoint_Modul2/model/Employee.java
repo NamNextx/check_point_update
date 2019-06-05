@@ -15,24 +15,37 @@ public class Employee {
     private String name;
     private String gender;
     private String phoneNumber;
+    private String birth;
+
+    public Employee(String gen, String name, String gender, String phoneNumber, String birth, String email, String address, String cmnd, Category category) {
+        this.gen = gen;
+        this.name = name;
+        this.gender = gender;
+        this.phoneNumber = phoneNumber;
+        this.birth = birth;
+        this.email = email;
+        this.address = address;
+        this.cmnd = cmnd;
+        this.category = category;
+    }
+
     private String email;
     private String address;
+    private String cmnd;
 
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
 
-    public Employee(String gen, String name, String gender, String phoneNumber, String email, String address, Category category) {
-        this.gen = gen;
-        this.name = name;
-        this.gender = gender;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
-        this.address = address;
-        this.category = category;
+    public Employee() {
     }
 
-    public Employee() {
+    public String getBirth() {
+        return birth;
+    }
+
+    public void setBirth(String birth) {
+        this.birth = birth;
     }
 
     public Long getId() {
@@ -89,6 +102,14 @@ public class Employee {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getCmnd() {
+        return cmnd;
+    }
+
+    public void setCmnd(String cmnd) {
+        this.cmnd = cmnd;
     }
 
     public Category getCategory() {
